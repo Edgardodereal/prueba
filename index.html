@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @page {
+            size: letter;
+            margin: 4mm 8mm;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            font-size: 11pt;
+            margin: 0 auto;
+            width: 195.9mm;
+            line-height: 1.1;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3px;
+            border-bottom: 2px solid #30643E;
+            padding-bottom: 3px;
+        }
+        .logo-img { height: 38px; width: auto; }
+        .title-area { text-align: right; }
+        h1 { color: #30643E; font-size: 14pt; margin: 0; text-transform: uppercase; }
+        
+        .section-header {
+            background-color: #30643E;
+            color: white;
+            padding: 2px 8px;
+            font-weight: bold;
+            margin-top: 3px;
+            margin-bottom: 2px;
+            font-size: 9.5pt;
+        }
+        .row { display: flex; gap: 8px; margin-bottom: 1px; }
+        .group { flex: 1; display: flex; flex-direction: column; }
+        .label { font-weight: bold; color: #30643E; font-size: 8.5pt; }
+        .label-en { color: #777; font-weight: normal; font-style: italic; font-size: 7.5pt; }
+        
+        input[type="text"], textarea {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            padding: 1px 0;
+            font-size: 11pt;
+            width: 100%;
+            background: transparent;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        textarea {
+            border: 1px solid #ccc;
+            resize: none;
+            margin-top: 5px;
+        }
+        
+        .detalle-enganche {
+            border-bottom: 1px dashed #ccc;
+            font-size: 11pt !important;
+            margin-top: 1px;
+        }
+
+        .nota {
+            font-size: 8.5pt;
+            margin-top: 5px;
+            font-style: italic;
+            color: #444;
+        }
+
+        .footer { margin-top: 30px; display: flex; justify-content: space-around; }
+        .sig-box { width: 42%; text-align: center; border-top: 1px solid #333; padding-top: 5px; font-size: 8pt; font-weight: bold; }
+
+        .no-print {
+            text-align: center;
+            margin-top: 5px;
+        }
+        .btn-download {
+            background-color: #30643E;
+            color: white;
+            padding: 6px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 10pt;
+        }
+        
+        @media print {
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://gruposalo.com/wp-content/uploads/2025/07/logo-G.png" class="logo-img">
+        <div class="title-area">
+            <h1>CARTA OFERTA / OFFER LETTER</h1>
+            <div style="font-size: 8pt;">
+                Lugar: <input type="text" name="lugar" style="width: 60px;"> 
+                Día: <input type="text" name="dia" style="width: 20px;">
+                Mes: <input type="text" name="mes" style="width: 50px;">
+                Año: <input type="text" name="año" style="width: 30px; font-size: 10pt;" value="2026">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-header">I. INFORMACIÓN DEL COMPRADOR / BUYER INFORMATION</div>
+    <div class="row">
+        <div class="group" style="flex: 2;">
+            <div class="label">Nombre(s) Legal(es) <span class="label-en">/ Legal Names</span></div>
+            <input type="text" name="comprador_nombre">
+        </div>
+        <div class="group">
+            <div class="label">Fecha Nacimiento <span class="label-en">/ Birthdate</span></div>
+            <input type="text" name="comprador_nacimiento" placeholder="DD/MM/AAAA">
+        </div>
+    </div>
+    <div class="row">
+        <div class="group"><div class="label">Dirección <span class="label-en">/ Address</span></div><input type="text" name="comprador_dir"></div>
+    </div>
+    <div class="row">
+        <div class="group"><div class="label">Ciudad/Estado <span class="label-en">/ City/State</span></div><input type="text" name="comprador_ciudad"></div>
+        <div class="group" style="flex: 0.3;"><div class="label">C.P. <span class="label-en">/ Zip</span></div><input type="text" name="comprador_cp"></div>
+        <div class="group"><div class="label">Nacionalidad <span class="label-en">/ Nationality</span></div><input type="text" name="comprador_nacionalidad"></div>
+    </div>
+    <div class="row">
+        <div class="group"><div class="label">RFC / CURP</div><input type="text" name="comprador_ids"></div>
+        <div class="group"><div class="label">Ocupación <span class="label-en">/ Occupation</span></div><input type="text" name="comprador_ocupacion"></div>
+        <div class="group"><div class="label">Estado Civil <span class="label-en">/ Marital Status</span></div><input type="text" name="comprador_civil"></div>
+    </div>
+    <div class="row">
+        <div class="group"><div class="label">Teléfono <span class="label-en">/ Phone</span></div><input type="text" name="comprador_tel"></div>
+        <div class="group"><div class="label">Email</div><input type="text" name="comprador_email"></div>
+    </div>
+
+    <div class="section-header">II. INFORMACIÓN DEL VENDEDOR / SELLER INFORMATION</div>
+    <div class="row">
+        <div class="group"><div class="label">Vendedor / Asesor <span class="label-en">/ Seller / Advisor</span></div><input type="text" name="asesor" value="Edgardo Romero, Grupo Salo"></div>
+    </div>
+
+    <div class="section-header">III. PROPIEDAD / PROPERTY</div>
+    <div class="row">
+        <div class="group"><div class="label">Desarrollo <span class="label-en">/ Development</span></div><input type="text" name="prop_desarrollo"></div>
+        <div class="group" style="flex: 0.4;"><div class="label">Número de Unidad <span class="label-en">/ Unit Number</span></div><input type="text" name="prop_unidad"></div>
+        <div class="group" style="flex: 0.4;"><div class="label">m² <span class="label-en">/ Sq. Mts.</span></div><input type="text" name="prop_m2"></div>
+    </div>
+    <div class="row">
+        <div class="group"><div class="label">Precio Base de la Unidad <span class="label-en">/ Base Price</span></div><input type="text" name="precio_base" id="precio_base"></div>
+        <div class="group" style="flex: 1.2;">
+            <div class="label">Tipo de Propiedad</div>
+            <div style="display:flex; gap:10px; padding-top:1px; font-size:8pt;">
+                <label><input type="checkbox"> Villa</label>
+                <label><input type="checkbox"> Lote</label>
+                <label><input type="checkbox"> Condo</label>
+                <label><input type="checkbox"> Casa</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-header">IV. OFERTA / OFFER</div>
+    <div class="row">
+        <div class="group" style="flex: 0.5;"><div class="label">% Descuento <span class="label-en">/ Discount %</span></div><input type="text" name="pct_desc" id="pct_desc"></div>
+        <div class="group"><div class="label">Oferta Final de la Unidad <span class="label-en">/ Final Offer</span></div><input type="text" name="oferta_final" id="oferta_final" style="font-weight:bold; color:#30643E;"></div>
+        <div class="group" style="flex: 0.8;"><div class="label">Apartado <span class="label-en">/ Booking</span></div><input type="text" name="apartado"></div>
+        <div class="group" style="flex: 0.4;"><div class="label">Moneda</div>
+            <div style="display:flex; gap:5px; padding-top:1px;"><label style="font-size:7pt;"><input type="checkbox"> USD</label><label style="font-size:7pt;"><input type="checkbox"> MN</label></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="group">
+            <div class="label">% Enganche <span class="label-en">/ Downpayment %</span></div>
+            <input type="text" name="pct_enganche" id="pct_enganche">
+            <input type="text" name="det_eng" class="detalle-enganche" placeholder="Detalles de estructura de pago del enganche...">
+        </div>
+        <div class="group">
+            <div class="label">Monto Enganche <span class="label-en">/ Downpayment Amount</span></div>
+            <input type="text" name="monto_enganche" id="monto_enganche" readonly>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="group">
+            <div class="label">% Mensualidades / Monto mensualidades <span class="label-en">/ Installments %</span></div>
+            <div style="display: flex; gap: 8px;">
+                <input type="text" name="pct_mes" id="pct_mes" style="flex: 1;">
+                <input type="text" name="monto_total_mes" id="monto_total_mes" placeholder="Monto Total" readonly style="flex: 1; font-weight: bold;">
+            </div>
+        </div>
+        <div class="group" style="flex: 0.4;"><div class="label">No. Meses</div><input type="text" name="num_mes" id="num_mes"></div>
+        <div class="group"><div class="label">Monto por Mensualidad</div><input type="text" name="monto_mes" id="monto_mes" readonly></div>
+    </div>
+
+    <div class="row">
+        <div class="group"><div class="label">% Contra Entrega <span class="label-en">/ Upon Delivery %</span></div><input type="text" name="pct_entrega" id="pct_entrega"></div>
+        <div class="group"><div class="label">Monto Contra Entrega</div><input type="text" name="monto_entrega" id="monto_entrega" readonly></div>
+    </div>
+
+    <div class="nota">Nota: El deposito es reembolsable en caso de cancelación durante 15 días</div>
+    
+    <div class="group" style="margin-top: 5px;">
+        <div class="label">Comentarios o solicitudes:</div>
+        <textarea name="comentarios" rows="4"></textarea>
+    </div>
+
+    <div class="footer">
+        <div class="sig-box">Iniciales Comprador / Buyer's initials</div>
+        <div class="sig-box">Iniciales Vendedor / Seller's initials</div>
+    </div>
+
+    <div class="no-print">
+        <button class="btn-download" onclick="window.print()">DESCARGAR CARTA EN PDF</button>
+    </div>
+
+    <script type="text/javascript">
+        function calculateFields() {
+            var base = parseFloat(document.getElementById("precio_base").value) || 0;
+            var desc = parseFloat(document.getElementById("pct_desc").value) || 0;
+            var finalOffer = base - (base * (desc / 100));
+            document.getElementById("oferta_final").value = finalOffer.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+            var pEng = parseFloat(document.getElementById("pct_enganche").value) || 0;
+            document.getElementById("monto_enganche").value = (finalOffer * (pEng / 100)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+            var pMes = parseFloat(document.getElementById("pct_mes").value) || 0;
+            var nMes = parseFloat(document.getElementById("num_mes").value) || 1;
+            var totalMesValue = finalOffer * (pMes / 100);
+            document.getElementById("monto_total_mes").value = totalMesValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById("monto_mes").value = (totalMesValue / nMes).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+            var pEnt = parseFloat(document.getElementById("pct_entrega").value) || 0;
+            document.getElementById("monto_entrega").value = (finalOffer * (pEnt / 100)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculateFields);
+        });
+    </script>
+</body>
+</html>
