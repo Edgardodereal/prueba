@@ -1,242 +1,1266 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <style>
-        @page {
-            size: letter;
-            margin: 4mm 8mm;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            color: #333;
-            font-size: 11pt;
-            margin: 0 auto;
-            width: 195.9mm;
-            line-height: 1.1;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 3px;
-            border-bottom: 2px solid #30643E;
-            padding-bottom: 3px;
-        }
-        .logo-img { height: 38px; width: auto; }
-        .title-area { text-align: right; }
-        h1 { color: #30643E; font-size: 14pt; margin: 0; text-transform: uppercase; }
-        
-        .section-header {
-            background-color: #30643E;
-            color: white;
-            padding: 2px 8px;
-            font-weight: bold;
-            margin-top: 3px;
-            margin-bottom: 2px;
-            font-size: 9.5pt;
-        }
-        .row { display: flex; gap: 8px; margin-bottom: 1px; }
-        .group { flex: 1; display: flex; flex-direction: column; }
-        .label { font-weight: bold; color: #30643E; font-size: 8.5pt; }
-        .label-en { color: #777; font-weight: normal; font-style: italic; font-size: 7.5pt; }
-        
-        input[type="text"], textarea {
-            border: none;
-            border-bottom: 1px solid #ccc;
-            padding: 1px 0;
-            font-size: 11pt;
-            width: 100%;
-            background: transparent;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        textarea {
-            border: 1px solid #ccc;
-            resize: none;
-            margin-top: 5px;
-        }
-        
-        .detalle-enganche {
-            border-bottom: 1px dashed #ccc;
-            font-size: 11pt !important;
-            margin-top: 1px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiencias Únicas — Vive lo extraordinario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-        .nota {
-            font-size: 8.5pt;
-            margin-top: 5px;
-            font-style: italic;
-            color: #444;
-        }
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .footer { margin-top: 30px; display: flex; justify-content: space-around; }
-        .sig-box { width: 42%; text-align: center; border-top: 1px solid #333; padding-top: 5px; font-size: 8pt; font-weight: bold; }
+    :root {
+      --coral:    #FF5A5F;
+      --coral-dk: #E04E53;
+      --ink:      #222222;
+      --mid:      #717171;
+      --light:    #B0B0B0;
+      --bg:       #F7F7F7;
+      --white:    #FFFFFF;
+      --border:   #DDDDDD;
+      --radius:   16px;
+      --shadow:   0 2px 16px rgba(0,0,0,.10);
+      --shadow-lg:0 8px 40px rgba(0,0,0,.14);
+    }
 
-        .no-print {
-            text-align: center;
-            margin-top: 5px;
-        }
-        .btn-download {
-            background-color: #30643E;
-            color: white;
-            padding: 6px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 10pt;
-        }
-        
-        @media print {
-            .no-print { display: none; }
-        }
-    </style>
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 72px;
+    }
+
+    .nav-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--coral);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--ink); }
+
+    .nav-search {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 8px 8px 8px 20px;
+      gap: 0;
+      box-shadow: 0 1px 6px rgba(0,0,0,.08);
+      cursor: pointer;
+      transition: box-shadow .2s;
+    }
+    .nav-search:hover { box-shadow: 0 2px 12px rgba(0,0,0,.14); }
+    .nav-search-part {
+      padding: 0 16px;
+      font-size: 13px;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .nav-search-divider {
+      width: 1px; height: 24px;
+      background: var(--border);
+    }
+    .nav-search-btn {
+      background: var(--coral);
+      border: none;
+      border-radius: 50%;
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: white;
+      font-size: 14px;
+      transition: background .2s;
+    }
+    .nav-search-btn:hover { background: var(--coral-dk); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 24px;
+      transition: background .15s;
+    }
+    .nav-link:hover { background: var(--bg); }
+    .nav-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 6px 8px 6px 14px;
+      cursor: pointer;
+      transition: box-shadow .2s;
+    }
+    .nav-user:hover { box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+    .nav-user-icon {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--mid);
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      font-size: 16px;
+    }
+
+    /* ─── HERO ───────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+        #1a1a2e 0%,
+        #16213e 40%,
+        #0f3460 70%,
+        #533483 100%
+      );
+    }
+    /* Decorative blobs */
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .35;
+    }
+    .hero-blob-1 {
+      width: 500px; height: 500px;
+      background: var(--coral);
+      top: -150px; right: -100px;
+    }
+    .hero-blob-2 {
+      width: 350px; height: 350px;
+      background: #7B61FF;
+      bottom: -100px; left: -50px;
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+      max-width: 680px;
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(36px, 6vw, 60px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      margin-bottom: 18px;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,.75);
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 36px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .hero-searchbar {
+      background: white;
+      border-radius: 60px;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,.25);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .hero-field {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 14px 22px;
+      cursor: pointer;
+      border-right: 1px solid var(--border);
+      transition: background .15s;
+    }
+    .hero-field:hover { background: var(--bg); }
+    .hero-field:last-of-type { border-right: none; }
+    .hero-field-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+    .hero-field-val {
+      font-size: 13px;
+      color: var(--mid);
+    }
+    .hero-search-cta {
+      background: var(--coral);
+      border: none;
+      padding: 14px 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+    .hero-search-cta:hover { background: var(--coral-dk); }
+
+    /* ─── SECTION COMMON ─────────────────────────── */
+    .section { padding: 56px 40px; }
+    .section-hd {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 28px;
+    }
+    .section-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .section-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+
+    /* ─── CATEGORY PILLS ─────────────────────────── */
+    .cats {
+      padding: 24px 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cats-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scrollbar-width: none;
+    }
+    .cats-scroll::-webkit-scrollbar { display: none; }
+    .cat-pill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px 10px;
+      border-radius: 0;
+      cursor: pointer;
+      white-space: nowrap;
+      color: var(--mid);
+      border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+      font-size: 12px;
+      font-weight: 500;
+      min-width: 72px;
+    }
+    .cat-pill.active, .cat-pill:hover {
+      color: var(--ink);
+      border-bottom-color: var(--ink);
+    }
+    .cat-pill-icon { font-size: 24px; }
+
+    /* ─── EXPERIENCE GRID ────────────────────────── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      cursor: pointer;
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform .2s;
+    }
+    .card:hover { transform: translateY(-4px); }
+
+    .card-img {
+      position: relative;
+      aspect-ratio: 3/2.3;
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+    .card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+    .card:hover .card-img img { transform: scale(1.05); }
+
+    .card-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: white;
+      color: var(--ink);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .card-fav {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,.3));
+      transition: transform .15s;
+      line-height: 1;
+    }
+    .card-fav:hover { transform: scale(1.15); }
+    .card-fav.active { color: var(--coral); }
+
+    .card-body { padding: 12px 4px 0; }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .card-location {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      color: var(--mid);
+      margin-bottom: 3px;
+    }
+    .card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .card-rating {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .card-rating-star { color: var(--coral); }
+    .card-rating-count { font-weight: 400; color: var(--mid); }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--mid);
+    }
+    .card-dot { font-size: 4px; }
+
+    .card-price {
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--ink);
+    }
+    .card-price strong {
+      font-weight: 700;
+    }
+
+    /* ─── HOW IT WORKS ───────────────────────────── */
+    .how {
+      background: var(--bg);
+      padding: 72px 40px;
+    }
+    .how-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .how-step { text-align: center; }
+    .how-step-num {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--coral);
+      color: white;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .how-step-icon { font-size: 36px; margin-bottom: 16px; }
+    .how-step h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .how-step p {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ─── HOST BANNER ────────────────────────────── */
+    .host-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 72px 80px;
+      background: var(--ink);
+      color: white;
+    }
+    .host-banner-text { max-width: 560px; }
+    .host-banner-eye {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 14px;
+    }
+    .host-banner h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .host-banner p {
+      font-size: 15px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .btn-outline-white {
+      display: inline-block;
+      border: 2px solid white;
+      color: white;
+      background: none;
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+      text-decoration: none;
+    }
+    .btn-outline-white:hover { background: white; color: var(--ink); }
+
+    .host-banner-visual {
+      font-size: 120px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    /* ─── REVIEWS ────────────────────────────────── */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .review-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .review-stars { font-size: 14px; color: var(--coral); margin-bottom: 12px; }
+    .review-text {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      background: var(--border);
+    }
+    .review-author-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .review-author-loc {
+      font-size: 12px;
+      color: var(--mid);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.55);
+      padding: 48px 40px 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-brand-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 12px;
+    }
+    .footer-brand-name span { color: var(--coral); }
+    .footer-tagline { font-size: 14px; line-height: 1.65; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      font-size: 16px;
+      transition: border-color .2s, color .2s;
+    }
+    .footer-social a:hover { border-color: white; color: white; }
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color .15s;
+    }
+    .footer-col ul li a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    /* ─── CTA BUTTON ─────────────────────────────── */
+    .btn-coral {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--coral);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      text-decoration: none;
+    }
+    .btn-coral:hover { background: var(--coral-dk); transform: translateY(-1px); }
+
+    /* ─── FEATURED / WIDE CARD ───────────────────── */
+    .featured-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 20px;
+    }
+    .featured-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .featured-card img {
+      width: 100%;
+      aspect-ratio: auto;
+      object-fit: cover;
+      transition: transform .35s;
+      display: block;
+    }
+    .featured-card:hover img { transform: scale(1.04); }
+    .featured-card-tall img { height: 460px; }
+    .featured-card-half img { height: 220px; }
+    .featured-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      color: white;
+    }
+    .feat-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 6px;
+    }
+    .feat-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .feat-price { font-size: 14px; color: rgba(255,255,255,.85); }
+    .feat-fav {
+      position: absolute;
+      top: 14px; right: 14px;
+      font-size: 22px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      filter: drop-shadow(0 1px 4px rgba(0,0,0,.4));
+    }
+    .feat-stack { display: flex; flex-direction: column; gap: 20px; }
+    .feat-stack .featured-card-half { flex: 1; }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-search { display: none; }
+      .hero { height: 420px; }
+      .hero-searchbar { flex-direction: column; border-radius: 20px; }
+      .hero-field { border-right: none; border-bottom: 1px solid var(--border); }
+      .section { padding: 40px 20px; }
+      .cats { padding: 16px 20px 0; }
+      .featured-row { grid-template-columns: 1fr; }
+      .featured-card-tall img { height: 280px; }
+      .how-steps { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .host-banner { flex-direction: column; padding: 48px 20px; text-align: center; }
+      .host-banner-visual { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <img src="https://gruposalo.com/wp-content/uploads/2025/07/logo-G.png" class="logo-img">
-        <div class="title-area">
-            <h1>CARTA OFERTA / OFFER LETTER</h1>
-            <div style="font-size: 8pt;">
-                Lugar: <input type="text" name="lugar" style="width: 60px;"> 
-                Día: <input type="text" name="dia" style="width: 20px;">
-                Mes: <input type="text" name="mes" style="width: 50px;">
-                Año: <input type="text" name="año" style="width: 30px; font-size: 10pt;" value="2026">
-            </div>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════════════ -->
+<nav>
+  <a href="#" class="nav-logo">Wander<span>lust</span></a>
+
+  <div class="nav-search">
+    <div class="nav-search-part">¿A dónde?</div>
+    <div class="nav-search-divider"></div>
+    <div class="nav-search-part">¿Cuándo?</div>
+    <div class="nav-search-divider"></div>
+    <div class="nav-search-part">¿Cuántos somos?</div>
+    <button class="nav-search-btn">🔍</button>
+  </div>
+
+  <div class="nav-right">
+    <a href="#anfitrion" class="nav-link">¿Tienes experiencias para compartir?→</a>
+    <div class="nav-user">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <div class="nav-user-icon">👤</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Experiencias únicas</p>
+    <h1 class="hero-title">Vive lo que <em>nunca</em><br/>olvidarás</h1>
+    <p class="hero-sub">Actividades diseñadas y guiadas por locales apasionados.<br/>Auténticas, memorables e irrepetibles.</p>
+
+    <div class="hero-searchbar">
+      <div class="hero-field">
+        <span class="hero-field-label">Destino</span>
+        <span class="hero-field-val">¿A dónde quieres ir?</span>
+      </div>
+      <div class="hero-field">
+        <span class="hero-field-label">Fecha</span>
+        <span class="hero-field-val">Agrega fechas</span>
+      </div>
+      <div class="hero-field">
+        <span class="hero-field-label">Personas</span>
+        <span class="hero-field-val">Agrega personas</span>
+      </div>
+      <button class="hero-search-cta">🔍 Buscar</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CATEGORÍAS ════════════════════════════════════════════ -->
+<div class="cats">
+  <div class="cats-scroll">
+    <div class="cat-pill active" onclick="filterCat(this)">
+      <span class="cat-pill-icon">✨</span>Todos
+    </div>
+    <div class="cat-pill" onclick="filterCat(this)">
+      <span class="cat-pill-icon">🍽️</span>Gastronomía
+    </div>
+    <div class="cat-pill" onclick="filterCat(this)">
+      <span class="cat-pill-icon">🌊</span>Aventura
+    </div>
+    <div class="cat-pill" onclick="filterCat(this)">
+      <span class="cat-pill-icon">🎨</span>Arte & Cultura
+    </div>
+    <div class="cat-pill" onclick="filterCat(this)">
+      <span class="cat-pill-icon">🧘</span>Bienestar
+    </div>
+    <div class="cat-pill" onclick="filterCat(this)">
+      <span class="cat-pill-icon">🎵</span>Música
+    </div>
+    <div class="cat-pill" onclick="filterCat(this)">
+      <span class="cat-pill-icon">🏕️</span>Naturaleza
+    </div>
+    <div class="cat-pill" onclick="filterCat(this)">
+      <span class="cat-pill-icon">📸</span>Fotografía
+    </div>
+    <div class="cat-pill" onclick="filterCat(this)">
+      <span class="cat-pill-icon">🐾</span>Animales
+    </div>
+    <div class="cat-pill" onclick="filterCat(this)">
+      <span class="cat-pill-icon">🍷</span>Catas
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DESTACADOS ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-hd">
+    <h2 class="section-title">Experiencias destacadas</h2>
+    <span class="section-link">Ver todas →</span>
+  </div>
+
+  <div class="featured-row">
+    <!-- Tarjeta grande -->
+    <div class="featured-card featured-card-tall">
+      <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80" alt="Cocina tradicional" />
+      <div class="featured-card-overlay">
+        <p class="feat-tag">Gastronomía · Ciudad de México</p>
+        <p class="feat-name">Clase de cocina tradicional con chef local</p>
+        <p class="feat-price">Desde <strong>$85 USD</strong> por persona</p>
+      </div>
+      <button class="feat-fav" onclick="toggleFav(this)">🤍</button>
+    </div>
+
+    <!-- Columna derecha: dos medias tarjetas -->
+    <div class="feat-stack">
+      <div class="featured-card featured-card-half">
+        <img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?w=800&q=80" alt="Surf" />
+        <div class="featured-card-overlay">
+          <p class="feat-tag">Aventura · Oaxaca</p>
+          <p class="feat-name">Surf al amanecer en Puerto Escondido</p>
+          <p class="feat-price">Desde <strong>$60 USD</strong></p>
         </div>
-    </div>
-
-    <div class="section-header">I. INFORMACIÓN DEL COMPRADOR / BUYER INFORMATION</div>
-    <div class="row">
-        <div class="group" style="flex: 2;">
-            <div class="label">Nombre(s) Legal(es) <span class="label-en">/ Legal Names</span></div>
-            <input type="text" name="comprador_nombre">
+        <button class="feat-fav" onclick="toggleFav(this)">🤍</button>
+      </div>
+      <div class="featured-card featured-card-half">
+        <img src="https://images.unsplash.com/photo-1581094651181-35942459ef62?w=800&q=80" alt="Fotografía" />
+        <div class="featured-card-overlay">
+          <p class="feat-tag">Fotografía · Guadalajara</p>
+          <p class="feat-name">Tour fotográfico por el centro histórico</p>
+          <p class="feat-price">Desde <strong>$45 USD</strong></p>
         </div>
-        <div class="group">
-            <div class="label">Fecha Nacimiento <span class="label-en">/ Birthdate</span></div>
-            <input type="text" name="comprador_nacimiento" placeholder="DD/MM/AAAA">
+        <button class="feat-fav" onclick="toggleFav(this)">🤍</button>
+      </div>
+    </div>
+
+    <!-- Columna derecha extra -->
+    <div class="feat-stack">
+      <div class="featured-card featured-card-half">
+        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=800&q=80" alt="Mezcal" />
+        <div class="featured-card-overlay">
+          <p class="feat-tag">Catas · Oaxaca</p>
+          <p class="feat-name">Cata de mezcal artesanal con mezcalero</p>
+          <p class="feat-price">Desde <strong>$55 USD</strong></p>
         </div>
-    </div>
-    <div class="row">
-        <div class="group"><div class="label">Dirección <span class="label-en">/ Address</span></div><input type="text" name="comprador_dir"></div>
-    </div>
-    <div class="row">
-        <div class="group"><div class="label">Ciudad/Estado <span class="label-en">/ City/State</span></div><input type="text" name="comprador_ciudad"></div>
-        <div class="group" style="flex: 0.3;"><div class="label">C.P. <span class="label-en">/ Zip</span></div><input type="text" name="comprador_cp"></div>
-        <div class="group"><div class="label">Nacionalidad <span class="label-en">/ Nationality</span></div><input type="text" name="comprador_nacionalidad"></div>
-    </div>
-    <div class="row">
-        <div class="group"><div class="label">RFC / CURP</div><input type="text" name="comprador_ids"></div>
-        <div class="group"><div class="label">Ocupación <span class="label-en">/ Occupation</span></div><input type="text" name="comprador_ocupacion"></div>
-        <div class="group"><div class="label">Estado Civil <span class="label-en">/ Marital Status</span></div><input type="text" name="comprador_civil"></div>
-    </div>
-    <div class="row">
-        <div class="group"><div class="label">Teléfono <span class="label-en">/ Phone</span></div><input type="text" name="comprador_tel"></div>
-        <div class="group"><div class="label">Email</div><input type="text" name="comprador_email"></div>
-    </div>
-
-    <div class="section-header">II. INFORMACIÓN DEL VENDEDOR / SELLER INFORMATION</div>
-    <div class="row">
-        <div class="group"><div class="label">Vendedor / Asesor <span class="label-en">/ Seller / Advisor</span></div><input type="text" name="asesor" value="Edgardo Romero, Grupo Salo"></div>
-    </div>
-
-    <div class="section-header">III. PROPIEDAD / PROPERTY</div>
-    <div class="row">
-        <div class="group"><div class="label">Desarrollo <span class="label-en">/ Development</span></div><input type="text" name="prop_desarrollo"></div>
-        <div class="group" style="flex: 0.4;"><div class="label">Número de Unidad <span class="label-en">/ Unit Number</span></div><input type="text" name="prop_unidad"></div>
-        <div class="group" style="flex: 0.4;"><div class="label">m² <span class="label-en">/ Sq. Mts.</span></div><input type="text" name="prop_m2"></div>
-    </div>
-    <div class="row">
-        <div class="group"><div class="label">Precio Base de la Unidad <span class="label-en">/ Base Price</span></div><input type="text" name="precio_base" id="precio_base"></div>
-        <div class="group" style="flex: 1.2;">
-            <div class="label">Tipo de Propiedad</div>
-            <div style="display:flex; gap:10px; padding-top:1px; font-size:8pt;">
-                <label><input type="checkbox"> Villa</label>
-                <label><input type="checkbox"> Lote</label>
-                <label><input type="checkbox"> Condo</label>
-                <label><input type="checkbox"> Casa</label>
-            </div>
+        <button class="feat-fav" onclick="toggleFav(this)">🤍</button>
+      </div>
+      <div class="featured-card featured-card-half">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Senderismo" />
+        <div class="featured-card-overlay">
+          <p class="feat-tag">Naturaleza · Puebla</p>
+          <p class="feat-name">Senderismo en el volcán Iztaccíhuatl</p>
+          <p class="feat-price">Desde <strong>$70 USD</strong></p>
         </div>
+        <button class="feat-fav" onclick="toggleFav(this)">🤍</button>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="section-header">IV. OFERTA / OFFER</div>
-    <div class="row">
-        <div class="group" style="flex: 0.5;"><div class="label">% Descuento <span class="label-en">/ Discount %</span></div><input type="text" name="pct_desc" id="pct_desc"></div>
-        <div class="group"><div class="label">Oferta Final de la Unidad <span class="label-en">/ Final Offer</span></div><input type="text" name="oferta_final" id="oferta_final" style="font-weight:bold; color:#30643E;"></div>
-        <div class="group" style="flex: 0.8;"><div class="label">Apartado <span class="label-en">/ Booking</span></div><input type="text" name="apartado"></div>
-        <div class="group" style="flex: 0.4;"><div class="label">Moneda</div>
-            <div style="display:flex; gap:5px; padding-top:1px;"><label style="font-size:7pt;"><input type="checkbox"> USD</label><label style="font-size:7pt;"><input type="checkbox"> MN</label></div>
+<!-- ═══ GRID DE EXPERIENCIAS ══════════════════════════════════ -->
+<section class="section" style="background: var(--bg); padding-top: 0;">
+  <div class="section-hd" style="padding-top:56px;">
+    <h2 class="section-title">Todas las experiencias</h2>
+    <span class="section-link">Ver mapa →</span>
+  </div>
+
+  <div class="grid" id="exp-grid">
+
+    <!-- Tarjeta 1 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Tacos" loading="lazy" />
+        <span class="card-badge">⭐ Más popular</span>
+        <button class="card-fav" onclick="toggleFav(this)">🤍</button>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <p class="card-location">Ciudad de México</p>
+            <p class="card-title">Recorrido gastronómico de tacos nocturnos</p>
+          </div>
+          <div class="card-rating">
+            <span class="card-rating-star">★</span>4.97
+            <span class="card-rating-count">(312)</span>
+          </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="group">
-            <div class="label">% Enganche <span class="label-en">/ Downpayment %</span></div>
-            <input type="text" name="pct_enganche" id="pct_enganche">
-            <input type="text" name="det_eng" class="detalle-enganche" placeholder="Detalles de estructura de pago del enganche...">
+        <div class="card-meta">
+          <span>🍽️ Gastronomía</span>
+          <span class="card-dot">●</span>
+          <span>2 hrs</span>
+          <span class="card-dot">●</span>
+          <span>Grupos pequeños</span>
         </div>
-        <div class="group">
-            <div class="label">Monto Enganche <span class="label-en">/ Downpayment Amount</span></div>
-            <input type="text" name="monto_enganche" id="monto_enganche" readonly>
+        <p class="card-price">Desde <strong>$38 USD</strong> / persona</p>
+      </div>
+    </div>
+
+    <!-- Tarjeta 2 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Montaña" loading="lazy" />
+        <button class="card-fav active" onclick="toggleFav(this)">❤️</button>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <p class="card-location">San Cristóbal de las Casas</p>
+            <p class="card-title">Caminata al lago de Montebello al amanecer</p>
+          </div>
+          <div class="card-rating">
+            <span class="card-rating-star">★</span>5.0
+            <span class="card-rating-count">(88)</span>
+          </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="group">
-            <div class="label">% Mensualidades / Monto mensualidades <span class="label-en">/ Installments %</span></div>
-            <div style="display: flex; gap: 8px;">
-                <input type="text" name="pct_mes" id="pct_mes" style="flex: 1;">
-                <input type="text" name="monto_total_mes" id="monto_total_mes" placeholder="Monto Total" readonly style="flex: 1; font-weight: bold;">
-            </div>
+        <div class="card-meta">
+          <span>🏕️ Naturaleza</span>
+          <span class="card-dot">●</span>
+          <span>5 hrs</span>
         </div>
-        <div class="group" style="flex: 0.4;"><div class="label">No. Meses</div><input type="text" name="num_mes" id="num_mes"></div>
-        <div class="group"><div class="label">Monto por Mensualidad</div><input type="text" name="monto_mes" id="monto_mes" readonly></div>
+        <p class="card-price">Desde <strong>$65 USD</strong> / persona</p>
+      </div>
     </div>
 
-    <div class="row">
-        <div class="group"><div class="label">% Contra Entrega <span class="label-en">/ Upon Delivery %</span></div><input type="text" name="pct_entrega" id="pct_entrega"></div>
-        <div class="group"><div class="label">Monto Contra Entrega</div><input type="text" name="monto_entrega" id="monto_entrega" readonly></div>
+    <!-- Tarjeta 3 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=80" alt="Fotografía" loading="lazy" />
+        <span class="card-badge">🆕 Nuevo</span>
+        <button class="card-fav" onclick="toggleFav(this)">🤍</button>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <p class="card-location">Mérida</p>
+            <p class="card-title">Sesión de retratos en hacienda colonial</p>
+          </div>
+          <div class="card-rating">
+            <span class="card-rating-star">★</span>4.91
+            <span class="card-rating-count">(47)</span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <span>📸 Fotografía</span>
+          <span class="card-dot">●</span>
+          <span>3 hrs</span>
+        </div>
+        <p class="card-price">Desde <strong>$90 USD</strong> / persona</p>
+      </div>
     </div>
 
-    <div class="nota">Nota: El deposito es reembolsable en caso de cancelación durante 15 días</div>
-    
-    <div class="group" style="margin-top: 5px;">
-        <div class="label">Comentarios o solicitudes:</div>
-        <textarea name="comentarios" rows="4"></textarea>
+    <!-- Tarjeta 4 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="Yoga" loading="lazy" />
+        <button class="card-fav" onclick="toggleFav(this)">🤍</button>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <p class="card-location">Tulum</p>
+            <p class="card-title">Yoga y meditación en la selva maya</p>
+          </div>
+          <div class="card-rating">
+            <span class="card-rating-star">★</span>4.98
+            <span class="card-rating-count">(220)</span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <span>🧘 Bienestar</span>
+          <span class="card-dot">●</span>
+          <span>2.5 hrs</span>
+        </div>
+        <p class="card-price">Desde <strong>$50 USD</strong> / persona</p>
+      </div>
     </div>
 
-    <div class="footer">
-        <div class="sig-box">Iniciales Comprador / Buyer's initials</div>
-        <div class="sig-box">Iniciales Vendedor / Seller's initials</div>
+    <!-- Tarjeta 5 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1560393464-5c69a73c5770?w=600&q=80" alt="Pintura" loading="lazy" />
+        <span class="card-badge">🎨 Arte</span>
+        <button class="card-fav" onclick="toggleFav(this)">🤍</button>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <p class="card-location">Oaxaca</p>
+            <p class="card-title">Taller de alebrijes con artesano local</p>
+          </div>
+          <div class="card-rating">
+            <span class="card-rating-star">★</span>4.95
+            <span class="card-rating-count">(134)</span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <span>🎨 Arte & Cultura</span>
+          <span class="card-dot">●</span>
+          <span>4 hrs</span>
+        </div>
+        <p class="card-price">Desde <strong>$75 USD</strong> / persona</p>
+      </div>
     </div>
 
-    <div class="no-print">
-        <button class="btn-download" onclick="window.print()">DESCARGAR CARTA EN PDF</button>
+    <!-- Tarjeta 6 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Cocina" loading="lazy" />
+        <button class="card-fav" onclick="toggleFav(this)">🤍</button>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <p class="card-location">Puerto Vallarta</p>
+            <p class="card-title">Clase de ceviche y mariscos frescos</p>
+          </div>
+          <div class="card-rating">
+            <span class="card-rating-star">★</span>4.93
+            <span class="card-rating-count">(178)</span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <span>🍽️ Gastronomía</span>
+          <span class="card-dot">●</span>
+          <span>3 hrs</span>
+        </div>
+        <p class="card-price">Desde <strong>$55 USD</strong> / persona</p>
+      </div>
     </div>
 
-    <script type="text/javascript">
-        function calculateFields() {
-            var base = parseFloat(document.getElementById("precio_base").value) || 0;
-            var desc = parseFloat(document.getElementById("pct_desc").value) || 0;
-            var finalOffer = base - (base * (desc / 100));
-            document.getElementById("oferta_final").value = finalOffer.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    <!-- Tarjeta 7 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1471560090527-d1af5e4e6eb6?w=600&q=80" alt="Música" loading="lazy" />
+        <span class="card-badge">🎵 Música</span>
+        <button class="card-fav" onclick="toggleFav(this)">🤍</button>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <p class="card-location">Veracruz</p>
+            <p class="card-title">Noche de son jarocho con músicos locales</p>
+          </div>
+          <div class="card-rating">
+            <span class="card-rating-star">★</span>4.99
+            <span class="card-rating-count">(62)</span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <span>🎵 Música</span>
+          <span class="card-dot">●</span>
+          <span>3 hrs</span>
+        </div>
+        <p class="card-price">Desde <strong>$42 USD</strong> / persona</p>
+      </div>
+    </div>
 
-            var pEng = parseFloat(document.getElementById("pct_enganche").value) || 0;
-            document.getElementById("monto_enganche").value = (finalOffer * (pEng / 100)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    <!-- Tarjeta 8 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80" alt="Snorkel" loading="lazy" />
+        <span class="card-badge">🌊 Aventura</span>
+        <button class="card-fav" onclick="toggleFav(this)">🤍</button>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <div>
+            <p class="card-location">Cancún</p>
+            <p class="card-title">Snorkel en arrecife de coral con guía marino</p>
+          </div>
+          <div class="card-rating">
+            <span class="card-rating-star">★</span>4.96
+            <span class="card-rating-count">(291)</span>
+          </div>
+        </div>
+        <div class="card-meta">
+          <span>🌊 Aventura</span>
+          <span class="card-dot">●</span>
+          <span>4 hrs</span>
+        </div>
+        <p class="card-price">Desde <strong>$80 USD</strong> / persona</p>
+      </div>
+    </div>
 
-            var pMes = parseFloat(document.getElementById("pct_mes").value) || 0;
-            var nMes = parseFloat(document.getElementById("num_mes").value) || 1;
-            var totalMesValue = finalOffer * (pMes / 100);
-            document.getElementById("monto_total_mes").value = totalMesValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            document.getElementById("monto_mes").value = (totalMesValue / nMes).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  </div><!-- /grid -->
 
-            var pEnt = parseFloat(document.getElementById("pct_entrega").value) || 0;
-            document.getElementById("monto_entrega").value = (finalOffer * (pEnt / 100)).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        }
-        document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', calculateFields);
-        });
-    </script>
+  <div style="text-align:center; margin-top:40px;">
+    <button class="btn-coral">Ver todas las experiencias →</button>
+  </div>
+</section>
+
+<!-- ═══ CÓMO FUNCIONA ════════════════════════════════════════ -->
+<section class="how">
+  <h2 class="how-title">¿Cómo funciona?</h2>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="how-step-icon">🔍</div>
+      <div class="how-step-num">1</div>
+      <h3>Elige tu experiencia</h3>
+      <p>Explora cientos de actividades únicas filtradas por categoría, fecha y ciudad. Cada experiencia es verificada por nuestro equipo.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-step-icon">📅</div>
+      <div class="how-step-num">2</div>
+      <h3>Reserva con seguridad</h3>
+      <p>Confirma tu lugar con un pago seguro. Cancelación flexible disponible en la mayoría de experiencias.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-step-icon">🌟</div>
+      <div class="how-step-num">3</div>
+      <h3>Vive el momento</h3>
+      <p>Llega el día y conecta con tu anfitrión. Disfruta una experiencia diseñada especialmente para ti.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESEÑAS ════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-hd">
+    <h2 class="section-title">Lo que dicen nuestros viajeros</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Fue la experiencia más auténtica de todo mi viaje. El anfitrión conocía cada rincón y nos hizo sentir como en familia. Absolutamente lo mejor."</p>
+      <div class="review-author">
+        <div class="review-avatar">👩</div>
+        <div>
+          <p class="review-author-name">Valentina R.</p>
+          <p class="review-author-loc">Buenos Aires, Argentina</p>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Nunca pensé que una cata de mezcal cambiaría mi perspectiva de México. Cada detalle estuvo pensado para nosotros. Ya reservé la siguiente experiencia."</p>
+      <div class="review-author">
+        <div class="review-avatar">👨</div>
+        <div>
+          <p class="review-author-name">Marco T.</p>
+          <p class="review-author-loc">Barcelona, España</p>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Vine a Oaxaca sin expectativas y me fui con el corazón lleno. El taller de alebrijes con Don Ramón fue mágico. Recomiendo VivírXP al 100%."</p>
+      <div class="review-author">
+        <div class="review-avatar">👩</div>
+        <div>
+          <p class="review-author-name">Sofía M.</p>
+          <p class="review-author-loc">Ciudad de México, México</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ANFITRIÓN ═════════════════════════════════════════ -->
+<section class="host-banner" id="anfitrion">
+  <div class="host-banner-text">
+    <p class="host-banner-eye">Para anfitriones</p>
+    <h2>Comparte tu pasión y genera ingresos</h2>
+    <p>¿Tienes un talento especial, un conocimiento único o una tradición que vale la pena vivir? Crea tu experiencia en Wanderlust y conecta con viajeros de todo el mundo que buscan lo auténtico.</p>
+    <a href="#" class="btn-outline-white">Quiero formar parte de Wanderlust→</a>
+  </div>
+  <div class="host-banner-visual">🌺</div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <p class="footer-brand-name">Wander<span>lust</span></p>
+      <p class="footer-tagline">Conectamos viajeros con experiencias auténticas guiadas por locales apasionados. Cada momento, único.</p>
+      <div class="footer-social">
+        <a href="#">𝕏</a>
+        <a href="#">📷</a>
+        <a href="#">▶</a>
+        <a href="#">in</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Explorar</h4>
+      <ul>
+        <li><a href="#">Todas las experiencias</a></li>
+        <li><a href="#">Gastronomía</a></li>
+        <li><a href="#">Aventura</a></li>
+        <li><a href="#">Arte & Cultura</a></li>
+        <li><a href="#">Bienestar</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Anfitriones</h4>
+      <ul>
+        <li><a href="#">Crea tu experiencia</a></li>
+        <li><a href="#">Guía para anfitriones</a></li>
+        <li><a href="#">Comunidad</a></li>
+        <li><a href="#">Recursos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Soporte</h4>
+      <ul>
+        <li><a href="#">Centro de ayuda</a></li>
+        <li><a href="#">Política de cancelación</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Términos</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Wanderlust. Todos los derechos reservados.</span>
+    <span>🇲🇽 Español · MXN $</span>
+  </div>
+</footer>
+
+<!-- ═══ SCRIPTS ════════════════════════════════════════════════ -->
+<script>
+  // ── Toggle favorito ─────────────────────────────
+  function toggleFav(btn) {
+    const isActive = btn.classList.toggle('active');
+    btn.textContent = isActive ? '❤️' : '🤍';
+    btn.style.transform = 'scale(1.3)';
+    setTimeout(() => btn.style.transform = '', 200);
+  }
+
+  // ── Filtro de categorías (UI) ────────────────────
+  function filterCat(pill) {
+    document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+  }
+
+  // ── Sticky nav shadow on scroll ──────────────────
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 10
+      ? '0 2px 20px rgba(0,0,0,.10)'
+      : 'none';
+  }, { passive: true });
+
+  // ── Fade-in on scroll ────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card, .review-card, .how-step, .featured-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
