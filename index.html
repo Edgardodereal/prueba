@@ -1,693 +1,1034 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Experiencias Únicas — Vive lo extraordinario</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght=0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght=300;400;500;600&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlackBear Travel – Agencia de Viajes y Excursiones de Montaña</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --bear-brown: #3b2410;
+    --orange: #d4601a;
+    --amber: #e8a030;
+    --snow: #f5f3ef;
+    --mist: #e2ddd6;
+    --white: #ffffff;
+    --text-dim: #6b6560;
+  }
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --coral:    #FF5A5F;
-      --coral-dk: #E04E53;
-      --ink:      #222222;
-      --mid:      #717171;
-      --light:    #B0B0B0;
-      --bg:       #F7F7F7;
-      --white:    #FFFFFF;
-      --border:   #DDDDDD;
-      --radius:   16px;
-      --shadow:   0 2px 16px rgba(0,0,0,.10);
-      --shadow-lg:0 8px 40px rgba(0,0,0,.24);
-    }
+  html { scroll-behavior: smooth; }
 
-    html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+  }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--ink);
-      background: var(--white);
-      -webkit-font-smoothing: antialiased;
-    }
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(10,10,10,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+  }
 
-    /* ─── NAVBAR ─────────────────────────────────── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
-      height: 72px;
-    }
-    .nav-logo {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
-      font-size: 22px;
-      color: var(--coral);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-    .nav-logo span { color: var(--ink); }
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: .08em;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .logo span { color: var(--orange); }
 
-    /* ─── HERO ───────────────────────────────────── */
-    .hero {
-      position: relative;
-      height: 540px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #533483 100%);
-    }
-    .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .35; }
-    .hero-blob-1 { width: 500px; height: 500px; background: var(--coral); top: -150px; right: -100px; }
-    .hero-blob-2 { width: 350px; height: 350px; background: #7B61FF; bottom: -100px; left: -50px; }
-    .hero-content { position: relative; text-align: center; color: white; padding: 0 20px; width: 100%; max-width: 680px; }
-    .hero-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 16px; }
-    .hero-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(36px, 6vw, 60px); font-weight: 800; line-height: 1.08; letter-spacing: -1.5px; margin-bottom: 18px; }
-    .hero-title em { font-style: italic; font-weight: 300; color: rgba(255,255,255,.75); }
-    .hero-sub { font-size: 17px; color: rgba(255,255,255,.75); margin-bottom: 36px; line-height: 1.5; }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.7);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
 
-    /* Barra de búsqueda modificada únicamente por Destino */
-    .hero-searchbar {
-      background: white;
-      border-radius: 60px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      box-shadow: 0 8px 40px rgba(0,0,0,.25);
-      max-width: 460px;
-      margin: 0 auto;
-      padding: 6px;
-    }
-    .hero-field { flex: 1; display: flex; flex-direction: column; padding: 8px 24px; text-align: left; }
-    .hero-field-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--ink); margin-bottom: 4px; }
-    .hero-select { border: none; outline: none; background: transparent; font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink); width: 100%; font-weight: 600; cursor: pointer; }
-    .hero-search-cta { background: var(--coral); border: none; padding: 14px 28px; border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 8px; color: white; font-size: 14px; font-weight: 600; transition: background .2s; }
-    .hero-search-cta:hover { background: var(--coral-dk); }
+  .nav-cta {
+    background: var(--orange);
+    color: var(--white) !important;
+    padding: .45rem 1.2rem;
+    border-radius: 2px;
+  }
+  .nav-cta:hover { background: #bf5516; color: var(--white) !important; }
 
-    /* ─── CATEGORY PILLS ─────────────────────────── */
-    .cats { padding: 24px 40px 0; border-bottom: 1px solid var(--border); background: var(--white); }
-    .cats-scroll { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 16px; scrollbar-width: none; }
-    .cats-scroll::-webkit-scrollbar { display: none; }
-    .cat-pill { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 16px 10px; cursor: pointer; white-space: nowrap; color: var(--mid); border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; font-size: 12px; font-weight: 500; min-width: 72px; }
-    .cat-pill.active, .cat-pill:hover { color: var(--ink); border-bottom-color: var(--ink); }
-    .cat-pill-icon { font-size: 24px; }
+  .nav-phone {
+    font-size: .75rem;
+    color: rgba(255,255,255,.4);
+  }
 
-    .filter-status { padding: 12px 40px; background: var(--bg); font-size: 14px; color: var(--mid); display: none; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
-    .btn-clear-filters { background: none; border: none; color: var(--coral); font-weight: 600; cursor: pointer; text-decoration: underline; }
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
 
-    /* ─── EXPERIENCE GRID ────────────────────────── */
-    .section { padding: 56px 40px; }
-    .section-hd { margin-bottom: 28px; }
-    .section-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-    
-    .card { cursor: pointer; border-radius: var(--radius); overflow: hidden; transition: transform .2s, box-shadow .2s; background: var(--white); }
-    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .card-img { position: relative; aspect-ratio: 3/2.3; overflow: hidden; border-radius: var(--radius); }
-    .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
-    .card:hover .card-img img { transform: scale(1.05); }
-    .card-badge { position: absolute; top: 12px; left: 12px; background: white; color: var(--ink); font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px; z-index: 2; }
-    .card-fav { position: absolute; top: 12px; right: 12px; background: none; border: none; cursor: pointer; font-size: 22px; filter: drop-shadow(0 1px 3px rgba(0,0,0,.3)); z-index: 2; }
-    .card-fav.active { color: var(--coral); }
-    .card-body { padding: 12px 4px 12px; }
-    .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
-    .card-location { font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--mid); margin-bottom: 3px; }
-    .card-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; line-height: 1.35; color: var(--ink); }
-    .card-rating { display: flex; align-items: center; gap: 3px; font-size: 13px; font-weight: 600; }
-    .card-rating-star { color: var(--coral); }
-    .card-meta { display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 13px; color: var(--mid); }
-    .card-dot { font-size: 4px; }
-    .card-price { margin-top: 8px; font-size: 14px; color: var(--ink); }
-    .card-price strong { font-weight: 700; }
-    .no-results { grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--mid); display: none; }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,10,.55) 0%, rgba(10,10,10,.2) 40%, rgba(10,10,10,.8) 100%),
+      url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80') center/cover no-repeat;
+  }
 
-    /* ─── DYNAMIC OVERLAY MODAL (BANNER FLOTANTE) ── */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(4px);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      padding: 20px;
-    }
-    .modal-overlay.active { opacity: 1; pointer-events: auto; }
-    
-    .modal-wrapper {
-      background: var(--white);
-      width: 100%;
-      max-width: 840px;
-      max-height: 90vh;
-      border-radius: 24px;
-      overflow-y: auto;
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      transform: scale(0.95);
-      transition: transform 0.3s ease;
-    }
-    .modal-overlay.active .modal-wrapper { transform: scale(1); }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 6rem;
+    max-width: 800px;
+    margin-top: 64px;
+  }
 
-    /* Variante para modales pequeños (Ayuda / Cancelación) */
-    .modal-wrapper.modal-sm {
-      max-width: 480px;
-      padding: 32px;
-    }
-    
-    .modal-close {
-      position: absolute;
-      top: 20px; right: 20px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; z-index: 10;
-      transition: background 0.2s;
-    }
-    .modal-close:hover { background: var(--bg); }
+  .hero-eyebrow {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1rem;
+  }
 
-    .modal-grid-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; padding: 32px; }
-    
-    .modal-gallery { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; margin-bottom: 20px; border-radius: var(--radius); overflow: hidden; }
-    .modal-img-main { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
-    .modal-img-side-stack { display: grid; grid-template-rows: 1fr 1fr; gap: 8px; }
-    .modal-img-side { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    line-height: .92;
+    letter-spacing: .02em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--amber);
+  }
 
-    .modal-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 700; line-height: 1.25; margin-bottom: 8px; }
-    .modal-badge-row { display: flex; gap: 8px; align-items: center; margin-bottom: 16px; font-size: 13px; color: var(--mid); }
-    .modal-desc { font-size: 15px; line-height: 1.6; color: var(--ink); margin-bottom: 24px; }
-    
-    .booking-box { border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); position: sticky; top: 0; }
-    .booking-price { font-size: 20px; color: var(--ink); margin-bottom: 16px; }
-    .booking-price strong { font-size: 24px; font-weight: 800; color: var(--ink); }
-    
-    .booking-form { display: flex; flex-direction: column; gap: 12px; }
-    .form-group { display: flex; flex-direction: column; gap: 4px; }
-    .form-group label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--ink); }
-    .form-input { padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 14px; outline: none; }
-    .form-input:focus { border-color: var(--ink); }
-    
-    .btn-booking-submit { background: #25D366; color: white; border: none; padding: 14px; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px; transition: background 0.2s; }
-    .btn-booking-submit:hover { background: #20ba5a; }
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.75);
+    max-width: 460px;
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+  }
 
-    /* ─── CÓMO FUNCIONA ─────────────────────────── */
-    .how { background: var(--bg); padding: 72px 40px; }
-    .how-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 30px; font-weight: 700; text-align: center; margin-bottom: 48px; }
-    .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 900px; margin: 0 auto; }
-    .how-step { text-align: center; }
-    .how-step-num { width: 52px; height: 52px; border-radius: 50%; background: var(--coral); color: white; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
-    .how-step h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .how-step p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-    .host-banner { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 72px 80px; background: var(--ink); color: white; }
-    .host-banner-text { max-width: 560px; }
-    .host-banner-eye { font-size: 12px; font-weight: 600; color: var(--coral); margin-bottom: 14px; text-transform: uppercase; }
-    .host-banner h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 36px; font-weight: 800; margin-bottom: 16px; }
-    .host-banner p { font-size: 15px; color: rgba(255,255,255,.65); margin-bottom: 28px; }
-    .btn-outline-white { display: inline-block; border: 2px solid white; color: white; padding: 14px 28px; border-radius: 10px; font-weight: 600; text-decoration: none; transition: background 0.2s; }
-    .btn-outline-white:hover { background: white; color: var(--ink); }
+  .btn-primary {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--white);
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: .85rem 2.2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: #bf5516; transform: translateY(-2px); }
 
-    /* ─── FOOTER MODIFICADO ──────────────────────── */
-    footer { background: var(--ink); color: rgba(255,255,255,.55); padding: 48px 40px 32px; border-top: 1px solid rgba(255,255,255,.1); }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-bottom: 40px; }
-    .footer-brand-name { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; color: white; }
-    .footer-brand-name span { color: var(--coral); }
-    .footer-col h4 { font-size: 12px; color: rgba(255,255,255,.4); margin-bottom: 16px; text-transform: uppercase; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .footer-col ul li a { color: rgba(255,255,255,.7); text-decoration: none; font-size: 14px; cursor: pointer; transition: color 0.2s; }
-    .footer-col ul li a:hover { color: var(--coral); }
-    .footer-bottom { display: flex; justify-content: space-between; font-size: 13px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); }
+  .btn-ghost {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,.35);
+    color: var(--white);
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: .85rem 2.2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color .2s, background .2s;
+  }
+  .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,.07); }
 
-    @media (max-width: 900px) {
-      nav { padding: 0 20px; }
-      .hero { height: auto; padding: 60px 0; }
-      .hero-searchbar { border-radius: 30px; padding: 6px; width: 100%; max-width: 90%; }
-      .section { padding: 40px 20px; }
-      .cats { padding: 16px 20px 0; }
-      .modal-grid-layout { grid-template-columns: 1fr; padding: 20px; gap: 24px; }
-      .modal-gallery { grid-template-columns: 1fr; }
-      .modal-img-side-stack { display: none; }
-      .how-steps { grid-template-columns: 1fr; }
-      .host-banner { flex-direction: column; padding: 48px 20px; text-align: center; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-    }
-  </style>
+  /* scroll ticker */
+  .hero-ticker {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 0; right: 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,.12);
+    padding-top: 1rem;
+    z-index: 2;
+  }
+  .ticker-track {
+    display: flex;
+    gap: 5rem;
+    animation: ticker 20s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .ticker-track span {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+  }
+  .ticker-track span b { color: var(--orange); }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTION BASE ── */
+  section { padding: 6rem 3rem; }
+
+  .section-label {
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: .75rem;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: .04em;
+    line-height: 1;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: .9rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.5);
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  /* ── TRIPS GRID ── */
+  .trips-section { background: #0f0f0f; }
+
+  .trips-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+  }
+  .filter-tabs button {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    color: rgba(255,255,255,.55);
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .45rem 1.1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .filter-tabs button.active,
+  .filter-tabs button:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--white);
+  }
+
+  .trips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5px;
+  }
+
+  .trip-card {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .trip-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .6s ease;
+  }
+  .trip-card:hover img { transform: scale(1.06); }
+
+  .trip-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,.9) 0%, rgba(10,10,10,.1) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.8rem;
+    transition: background .3s;
+  }
+  .trip-card:hover .trip-card-overlay {
+    background: linear-gradient(to top, rgba(10,10,10,.95) 0%, rgba(10,10,10,.3) 60%);
+  }
+
+  .trip-tag {
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: .4rem;
+  }
+  .trip-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.9rem;
+    letter-spacing: .04em;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: .5rem;
+  }
+  .trip-meta {
+    font-size: .75rem;
+    color: rgba(255,255,255,.55);
+    margin-bottom: 1rem;
+  }
+  .trip-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .trip-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    letter-spacing: .04em;
+  }
+  .trip-price small {
+    font-family: 'Inter', sans-serif;
+    font-size: .65rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    color: rgba(255,255,255,.4);
+    display: block;
+    line-height: 1;
+    margin-bottom: .2rem;
+    text-transform: uppercase;
+  }
+  .trip-cta {
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--orange);
+    text-decoration: none;
+    border: 1px solid var(--orange);
+    padding: .4rem .9rem;
+    border-radius: 2px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all .25s;
+  }
+  .trip-card:hover .trip-cta { opacity: 1; transform: translateY(0); }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--bear-brown);
+    padding: 3.5rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background-color: rgba(255,255,255,.08);
+  }
+  .stat {
+    background: var(--bear-brown);
+    padding: 2rem 3rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--amber);
+    letter-spacing: .04em;
+    line-height: 1;
+    margin-bottom: .3rem;
+  }
+  .stat-label {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+  }
+
+  /* ── EXPERIENCE TYPES ── */
+  .experiences-section { background: var(--black); }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 3rem;
+    background: rgba(255,255,255,.06);
+  }
+
+  .exp-item {
+    background: var(--black);
+    padding: 3rem 2.5rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color .3s, background .3s;
+  }
+  .exp-item:hover {
+    border-bottom-color: var(--orange);
+    background: #141414;
+  }
+
+  .exp-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+  }
+  .exp-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: .06em;
+    color: var(--white);
+    margin-bottom: .6rem;
+  }
+  .exp-desc {
+    font-size: .8rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.45);
+    line-height: 1.65;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section {
+    background: #0a0a0a;
+    overflow: hidden;
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .testimonials-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .testimonial {
+    background: #141414;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 2px;
+    padding: 2.2rem;
+    position: relative;
+  }
+  .testimonial::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--orange);
+    opacity: .25;
+    position: absolute;
+    top: .5rem; left: 1.5rem;
+    line-height: 1;
+  }
+
+  .test-text {
+    font-size: .85rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.65);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .test-author {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+  }
+  .test-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--orange), var(--bear-brown));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: .85rem;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .test-name {
+    font-weight: 600;
+    font-size: .85rem;
+    color: var(--white);
+  }
+  .test-trip {
+    font-size: .72rem;
+    color: var(--orange);
+    margin-top: .1rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+  }
+
+  /* ── CONTACT / CTA BANNER ── */
+  .cta-banner {
+    position: relative;
+    padding: 7rem 3rem;
+    text-align: center;
+    overflow: hidden;
+  }
+  .cta-banner-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(10,10,10,.78), rgba(10,10,10,.78)),
+      url('https://images.unsplash.com/photo-1551632811-561732d1e306?w=1400&q=80') center/cover no-repeat;
+  }
+  .cta-banner-content { position: relative; z-index: 2; }
+  .cta-banner .section-title { font-size: clamp(2.5rem,6vw,5rem); margin-bottom: 1.2rem; }
+  .cta-banner .section-sub { margin: 0 auto 2.5rem; }
+
+  /* ── CONTACT FORM ── */
+  .contact-section { background: #0d0d0d; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .contact-info p {
+    font-size: .9rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.5);
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: .85rem;
+    margin-bottom: 1rem;
+    font-size: .85rem;
+    color: rgba(255,255,255,.65);
+  }
+  .contact-detail b { color: var(--orange); font-size: 1.1rem; }
+
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+    margin-bottom: .5rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: .88rem;
+    padding: .85rem 1.1rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,.2); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--orange); }
+  .form-group select option { background: #1a1a1a; }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bear-brown);
+    padding: 4rem 3rem 2rem;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .footer-brand p {
+    font-size: .8rem;
+    font-weight: 300;
+    color: rgba(255,255,255,.45);
+    line-height: 1.75;
+    margin-top: 1rem;
+    max-width: 280px;
+  }
+  .footer-col h5 {
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+    margin-bottom: 1rem;
+  }
+  .footer-col a {
+    display: block;
+    font-size: .82rem;
+    color: rgba(255,255,255,.55);
+    text-decoration: none;
+    margin-bottom: .55rem;
+    transition: color .2s;
+  }
+  .footer-col a:hover { color: var(--amber); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: .72rem;
+    color: rgba(255,255,255,.25);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+    .exp-grid { grid-template-columns: 1fr; }
+    .trips-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    .testimonials-track { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 500px) {
+    .stats-strip { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .hero-title { font-size: 3.5rem; }
+  }
+</style>
 </head>
 <body>
 
-<!-- ═══ NAVBAR ══════════════════════════════════════════════ -->
+<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Wander<span>lust</span></a>
+  <a class="logo" href="#">🐻 BLACKBEAR <span>TRAVEL</span></a>
+  <ul class="nav-links">
+    <li><a href="#trips">Experiencias</a></li>
+    <li><a href="#trips">Calendario</a></li>
+    <li><a href="#contact">Contacto</a></li>
+    <li><a href="#contact" class="nav-cta">Reservar</a></li>
+  </ul>
+  <span class="nav-phone">+52 33 1079 1616</span>
 </nav>
 
-<!-- ═══ HERO ════════════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-  </div>
+  <div class="hero-bg"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Experiencias únicas</p>
-    <h1 class="hero-title">Vive lo que <em>nunca</em><br/>olvidarás</h1>
-    <p class="hero-sub">Actividades diseñadas por guías apasionados,<br/>auténticas y memorables.</p>
+    <p class="hero-eyebrow">Agencia de Aventuras · México</p>
+    <h1 class="hero-title">DONDE LA<br><em>MONTAÑA</em><br>TE ESPERA</h1>
+    <p class="hero-sub">Tours, expediciones, escalada, ecoturismo, snowboard, camping y senderismo. Más de 2,000 aventureros han confiado en nosotros.</p>
+    <div class="hero-actions">
+      <a href="#trips" class="btn-primary">Ver experiencias</a>
+      <a href="#contact" class="btn-ghost">Armar mi viaje</a>
+    </div>
+  </div>
+  <div class="hero-ticker">
+    <div class="ticker-track" id="ticker">
+      <span>Pico de Orizaba <b>5,600 m</b></span>
+      <span>Iztaccíhuatl <b>5,230 m</b></span>
+      <span>Nevado de Colima <b>4,260 m</b></span>
+      <span>Nevado de Toluca <b>4,691 m</b></span>
+      <span>Volcán La Malinche <b>4,462 m</b></span>
+      <span>Everest Base Camp <b>5,364 m</b></span>
+      <span>Mont Tremblant <b>875 m</b></span>
+      <span>Winter Park <b>3,368 m</b></span>
+      <!-- duplicate for seamless loop -->
+      <span>Pico de Orizaba <b>5,600 m</b></span>
+      <span>Iztaccíhuatl <b>5,230 m</b></span>
+      <span>Nevado de Colima <b>4,260 m</b></span>
+      <span>Nevado de Toluca <b>4,691 m</b></span>
+      <span>Volcán La Malinche <b>4,462 m</b></span>
+      <span>Everest Base Camp <b>5,364 m</b></span>
+      <span>Mont Tremblant <b>875 m</b></span>
+      <span>Winter Park <b>3,368 m</b></span>
+    </div>
+  </div>
+</section>
 
-    <div class="hero-searchbar">
-      <div class="hero-field">
-        <label class="hero-field-label" for="search-dest">Destino</label>
-        <select id="search-dest" class="hero-select">
-          <option value="all">Cualquier destino</option>
-          <option value="ciudad de mexico">Ciudad de México</option>
-          <option value="cancun">Cancún</option>
-          <option value="playa del carmen">Playa del Carmen</option>
-          <option value="tulum">Tulum</option>
-          <option value="cenotes">Cenotes</option>
-          <option value="oaxaca">Oaxaca</option>
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat">
+    <div class="stat-num">2,000+</div>
+    <div class="stat-label">Aventureros</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">Destinos</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">9+</div>
+    <div class="stat-label">Años de experiencia</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">5,600m</div>
+    <div class="stat-label">Altitud máxima</div>
+  </div>
+</div>
+
+<!-- TRIPS -->
+<section class="trips-section" id="trips">
+  <div class="trips-header">
+    <div>
+      <p class="section-label">Próximas salidas</p>
+      <h2 class="section-title">EVENTOS CERCANOS</h2>
+    </div>
+    <div class="filter-tabs">
+      <button class="active" onclick="filterTrips('all', this)">Todos</button>
+      <button onclick="filterTrips('nacional', this)">Nacionales</button>
+      <button onclick="filterTrips('internacional', this)">Internacionales</button>
+      <button onclick="filterTrips('ski', this)">Ski & Snow</button>
+    </div>
+  </div>
+
+  <div class="trips-grid" id="tripsGrid">
+
+    <div class="trip-card" data-cat="nacional">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Nevado de Colima" loading="lazy">
+      <div class="trip-card-overlay">
+        <p class="trip-tag">Jalisco / Colima · 4,260 m</p>
+        <h3 class="trip-name">NEVADO<br>DE COLIMA</h3>
+        <p class="trip-meta">Campamento 2 días · Sáb 6 JUN</p>
+        <div class="trip-footer">
+          <div class="trip-price">
+            <small>Desde</small>
+            $2,799
+          </div>
+          <a href="#contact" class="trip-cta">Reservar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="trip-card" data-cat="nacional">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Volcán Iztaccíhuatl" loading="lazy">
+      <div class="trip-card-overlay">
+        <p class="trip-tag">Edo. de México / Puebla · 5,230 m</p>
+        <h3 class="trip-name">VOLCÁN<br>IZTACCIHUATL</h3>
+        <p class="trip-meta">Campamento 2 días · 6–7 JUN</p>
+        <div class="trip-footer">
+          <div class="trip-price">
+            <small>Desde</small>
+            $6,299
+          </div>
+          <a href="#contact" class="trip-cta">Reservar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="trip-card" data-cat="nacional">
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80" alt="Pico de Orizaba" loading="lazy">
+      <div class="trip-card-overlay">
+        <p class="trip-tag">Veracruz · 5,600 m</p>
+        <h3 class="trip-name">PICO DE<br>ORIZABA</h3>
+        <p class="trip-meta">Campamento 2 días · 20–21 JUN</p>
+        <div class="trip-footer">
+          <div class="trip-price">
+            <small>Desde</small>
+            $8,499
+          </div>
+          <a href="#contact" class="trip-cta">Reservar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="trip-card" data-cat="nacional">
+      <img src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=600&q=80" alt="Nevado de Toluca" loading="lazy">
+      <div class="trip-card-overlay">
+        <p class="trip-tag">Estado de México · 4,691 m</p>
+        <h3 class="trip-name">NEVADO<br>DE TOLUCA</h3>
+        <p class="trip-meta">Campamento 2 días · 13–14 JUN</p>
+        <div class="trip-footer">
+          <div class="trip-price">
+            <small>Desde</small>
+            $4,099
+          </div>
+          <a href="#contact" class="trip-cta">Reservar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="trip-card" data-cat="internacional">
+      <img src="https://images.unsplash.com/photo-1544985361-b420d7a77043?w=600&q=80" alt="Everest Base Camp" loading="lazy">
+      <div class="trip-card-overlay">
+        <p class="trip-tag">Nepal · 5,364 m</p>
+        <h3 class="trip-name">EVEREST<br>BASE CAMP</h3>
+        <p class="trip-meta">14 días · 23 Nov – 6 Dic</p>
+        <div class="trip-footer">
+          <div class="trip-price">
+            <small>Desde</small>
+            $3,199 USD
+          </div>
+          <a href="#contact" class="trip-cta">Reservar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="trip-card" data-cat="ski">
+      <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&q=80" alt="Winter Park" loading="lazy">
+      <div class="trip-card-overlay">
+        <p class="trip-tag">Colorado, EUA · 3,368 m</p>
+        <h3 class="trip-name">WINTER<br>PARK</h3>
+        <p class="trip-meta">6 días · 7–12 Abril 2026</p>
+        <div class="trip-footer">
+          <div class="trip-price">
+            <small>Desde</small>
+            $1,762 USD
+          </div>
+          <a href="#contact" class="trip-cta">Reservar</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE TYPES -->
+<section class="experiences-section">
+  <p class="section-label">¿Qué tipo de aventurero eres?</p>
+  <h2 class="section-title">ELIGE TU EXPERIENCIA</h2>
+  <div class="exp-grid">
+    <div class="exp-item">
+      <div class="exp-icon">⛰️</div>
+      <div class="exp-name">Alta Montaña</div>
+      <p class="exp-desc">Expediciones técnicas a los volcanes más emblemáticos de México e internacionales. Desde principiantes hasta alpinistas experimentados.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-icon">🏂</div>
+      <div class="exp-name">Ski & Snowboard</div>
+      <p class="exp-desc">Temporadas de invierno en Mammoth Lakes, Mont Tremblant y Winter Park. Paquetes para familias, parejas y grupos desde México.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-icon">🌿</div>
+      <div class="exp-name">Ecoturismo</div>
+      <p class="exp-desc">Huasteca Potosina, La Paz, Punta Mita y más. Experiencias de naturaleza con nado con tiburón ballena, senderismo y glamping.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-icon">🌎</div>
+      <div class="exp-name">Internacional</div>
+      <p class="exp-desc">Bolivia, Ecuador, Guatemala, Islandia, Perú, Nepal. Expediciones internacionales con guías certificados y logística completa.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-icon">🤝</div>
+      <div class="exp-name">Team Building</div>
+      <p class="exp-desc">Experiencias empresariales en la montaña. Nevado de Colima como escenario para fortalecer equipos de trabajo con un reto real.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-icon">🎿</div>
+      <div class="exp-name">Viaje Privado</div>
+      <p class="exp-desc">¿No encajas en ninguna fecha? Arma tu aventura privada con amigos, familia o pareja. Cotizamos experiencias personalizadas a la medida.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-banner-bg"></div>
+  <div class="cta-banner-content">
+    <p class="section-label">¿Listo para la cima?</p>
+    <h2 class="section-title">EL VIAJE ES<br>LA RECOMPENSA</h2>
+    <p class="section-sub" style="margin:0 auto 2.5rem;">Más de 2,000 personas han vivido la experiencia BLACKBEAR. Sé parte de la comunidad de aventureros.</p>
+    <a href="#contact" class="btn-primary">Armar mi viaje privado</a>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="testimonials-header">
+    <p class="section-label">Testimonios</p>
+    <h2 class="section-title">LO QUE DICEN<br>NUESTROS VIAJEROS</h2>
+  </div>
+  <div class="testimonials-track">
+    <div class="testimonial">
+      <p class="test-text">Fue una experiencia increíble, todas las actividades súper bien organizadas y la comida riquísima. Sin duda volvería a ir a un viaje con ustedes.</p>
+      <div class="test-author">
+        <div class="test-avatar">MC</div>
+        <div>
+          <div class="test-name">María Corina</div>
+          <div class="test-trip">Nevado de Colima · Los Mochis</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <p class="test-text">Gran gran viaje y organización. Mi única recomendación sería poner algún tipo de paliacate o distintivo para diferenciar staff de clientes.</p>
+      <div class="test-author">
+        <div class="test-avatar">FR</div>
+        <div>
+          <div class="test-name">Fernando Riquelme</div>
+          <div class="test-trip">Nevado de Colima · CDMX</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <p class="test-text">Estuvo increíble la experiencia, desde el campamento a la subida todos se portaron súper buena onda y el staff y guías muy atentos.</p>
+      <div class="test-author">
+        <div class="test-avatar">EG</div>
+        <div>
+          <div class="test-name">Esmeralda G.</div>
+          <div class="test-trip">Nevado de Colima · Zapopan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <p class="section-label">¿Tienes preguntas?</p>
+  <h2 class="section-title">ARMA TU<br>AVENTURA</h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>¿Tienes un grupo, una fecha especial o quieres personalizar tu ruta? Contáctanos y en menos de 24 horas te damos una propuesta a tu medida.</p>
+      <div class="contact-detail"><b>📞</b> +52 33 1079 1616</div>
+      <div class="contact-detail"><b>✉️</b> ventas@blackbeartravel.mx</div>
+      <div class="contact-detail"><b>📍</b> Guadalajara, Jalisco, México</div>
+    </div>
+    <div>
+      <div class="form-group">
+        <label>Nombre completo</label>
+        <input type="text" placeholder="Tu nombre">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="tu@email.com">
+      </div>
+      <div class="form-group">
+        <label>WhatsApp</label>
+        <input type="tel" placeholder="+52 33 0000 0000">
+      </div>
+      <div class="form-group">
+        <label>Destino de interés</label>
+        <select>
+          <option value="">Selecciona un destino</option>
+          <option>Nevado de Colima</option>
+          <option>Nevado de Toluca</option>
+          <option>Volcán Iztaccíhuatl</option>
+          <option>Volcán La Malinche</option>
+          <option>Pico de Orizaba</option>
+          <option>Everest Base Camp</option>
+          <option>Winter Park, Colorado</option>
+          <option>Mont Tremblant, Canadá</option>
+          <option>Huasteca Potosina</option>
+          <option>Otro destino</option>
         </select>
       </div>
-      <button class="hero-search-cta" onclick="executeHeroSearch()">🔍 Buscar</button>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CATEGORÍAS ════════════════════════════════════════════ -->
-<div class="cats">
-  <div class="cats-scroll">
-    <div class="cat-pill active" data-cat-value="all" onclick="filterCategory(this)"><span class="cat-pill-icon">✨</span>Todos</div>
-    <div class="cat-pill" data-cat-value="gastronomia" onclick="filterCategory(this)"><span class="cat-pill-icon">🍽️</span>Gastronomía</div>
-    <div class="cat-pill" data-cat-value="aventura" onclick="filterCategory(this)"><span class="cat-pill-icon">🌊</span>Aventura</div>
-    <div class="cat-pill" data-cat-value="arte" onclick="filterCategory(this)"><span class="cat-pill-icon">🎨</span>Arte y cultura</div>
-    <div class="cat-pill" data-cat-value="bienestar" onclick="filterCategory(this)"><span class="cat-pill-icon">🧘</span>Bienestar</div>
-    <div class="cat-pill" data-cat-value="musica" onclick="filterCategory(this)"><span class="cat-pill-icon">🎵</span>Música</div>
-    <div class="cat-pill" data-cat-value="naturaleza" onclick="filterCategory(this)"><span class="cat-pill-icon">🏕️</span>Naturaleza</div>
-    <div class="cat-pill" data-cat-value="fotografia" onclick="filterCategory(this)"><span class="cat-pill-icon">📸</span>Fotografía</div>
-    <div class="cat-pill" data-cat-value="animales" onclick="filterCategory(this)"><span class="cat-pill-icon">🐬</span>Animales</div>
-    <div class="cat-pill" data-cat-value="catas" onclick="filterCategory(this)"><span class="cat-pill-icon">🍷</span>Catas</div>
-  </div>
-</div>
-
-<div class="filter-status" id="filter-status-bar">
-  <span id="filter-status-text">Mostrando resultados</span>
-  <button class="btn-clear-filters" onclick="resetAllFilters()">Limpiar filtros</button>
-</div>
-
-<!-- ═══ GRID DE EXPERIENCIAS ═════════════════════════════════ -->
-<section class="section" style="background: var(--bg);">
-  <div class="section-hd">
-    <h2 class="section-title">Todas las experiencias</h2>
-  </div>
-
-  <div class="grid" id="exp-grid">
-    <div class="no-results" id="no-results-msg">No se encontraron experiencias. Intenta con otros filtros.</div>
-
-    <!-- Tarjeta 1 -->
-    <div class="card" 
-         data-location="ciudad de mexico" 
-         data-cat="gastronomia" 
-         data-price="38" 
-         data-desc="Explora el submundo de los mejores tacos de la CDMX. Caminaremos por locales tradicionales ocultos, probando desde tacos de pastor perfectamente sazonados hasta opciones de suadero e historias de barrio contadas por un experto culinario nativo."
-         data-imgs="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80,https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?w=500&q=80,https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&q=80"
-         onclick="openExperienceModal(this)">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Tacos" loading="lazy" />
-        <span class="card-badge">⭐ Más popular</span>
-      </div>
-      <div class="card-body">
-        <div class="card-top">
-          <div>
-            <p class="card-location">Ciudad de México</p>
-            <p class="card-title">Recorrido gastronómico de tacos nocturnos</p>
-          </div>
-          <div class="card-rating"><span class="card-rating-star">★</span>4.97</div>
-        </div>
-        <div class="card-meta"><span>🍽️ Gastronomía</span><span class="card-dot">●</span><span>2 hrs</span></div>
-        <p class="card-price">Desde <strong>$38 USD</strong> / persona</p>
-      </div>
-    </div>
-
-    <!-- Tarjeta 2 -->
-    <div class="card" 
-         data-location="cancun" 
-         data-cat="aventura" 
-         data-price="65" 
-         data-desc="Sumérgete en las aguas cristalinas del Caribe Mexicano. Visitaremos tres puntos clave del arrecife de Cancún para nadar junto a tortugas marinas, peces tropicales multicolores y un entorno de naturaleza único bajo la guía de expertos certificados."
-         data-imgs="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80,https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=500&q=80,https://images.unsplash.com/photo-1682687220063-4742bd7fd538?w=500&q=80"
-         onclick="openExperienceModal(this)">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Snorkel" loading="lazy" />
-      </div>
-      <div class="card-body">
-        <div class="card-top">
-          <div>
-            <p class="card-location">Cancún</p>
-            <p class="card-title">Snorkel extremo en arrecifes locales</p>
-          </div>
-          <div class="card-rating"><span class="card-rating-star">★</span>5.0</div>
-        </div>
-        <div class="card-meta"><span>🌊 Aventura</span><span class="card-dot">●</span><span>4 hrs</span></div>
-        <p class="card-price">Desde <strong>$65 USD</strong> / persona</p>
-      </div>
-    </div>
-
-    <!-- Tarjeta 3 -->
-    <div class="card" 
-         data-location="playa del carmen" 
-         data-cat="catas" 
-         data-price="80" 
-         data-desc="Una experiencia sensorial exclusiva para amantes de los sabores intensos. Aprende a diferenciar perfiles de cata combinando vinos tintos e hidromieles del territorio mexicano con finas barras de chocolate artesanal con incrustaciones de frutos endémicos."
-         data-imgs="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80,https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&q=80,https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80"
-         onclick="openExperienceModal(this)">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80" alt="Vinos" loading="lazy" />
-      </div>
-      <div class="card-body">
-        <div class="card-top">
-          <div>
-            <p class="card-location">Playa del Carmen</p>
-            <p class="card-title">Maridaje de vino mexicano y chocolates ocultos</p>
-          </div>
-          <div class="card-rating"><span class="card-rating-star">★</span>4.91</div>
-        </div>
-        <div class="card-meta"><span>🍷 Catas</span><span class="card-dot">●</span><span>2 hrs</span></div>
-        <p class="card-price">Desde <strong>$80 USD</strong> / persona</p>
-      </div>
-    </div>
-
-    <!-- Tarjeta 4 -->
-    <div class="card" 
-         data-location="tulum" 
-         data-cat="bienestar" 
-         data-price="50" 
-         data-desc="Desconéctate del ruido exterior en un santuario privado en medio de la selva de Tulum. Sesión integral guiada que involucra vinyasa flow yoga, baño sonoro con cuencos de cuarzo y una sesión final de meditación introspectiva de sanación."
-         data-imgs="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80,https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=500&q=80,https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80"
-         onclick="openExperienceModal(this)">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="Yoga" loading="lazy" />
-      </div>
-      <div class="card-body">
-        <div class="card-top">
-          <div>
-            <p class="card-location">Tulum</p>
-            <p class="card-title">Yoga y meditación en la selva maya</p>
-          </div>
-          <div class="card-rating"><span class="card-rating-star">★</span>4.98</div>
-        </div>
-        <div class="card-meta"><span>🧘 Bienestar</span><span class="card-dot">●</span><span>2.5 hrs</span></div>
-        <p class="card-price">Desde <strong>$50 USD</strong> / persona</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ MODAL RESERVA DE EXPERIENCIA (PROPORCIONADO) ═══════ -->
-<div class="modal-overlay" id="exp-modal" onclick="closeExperienceModal()">
-  <div class="modal-wrapper" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeExperienceModal()">✕</button>
-    
-    <div class="modal-grid-layout">
-      <div>
-        <div class="modal-gallery" id="modal-gallery-box"></div>
-        <h2 class="modal-title" id="modal-title-target">Título de la experiencia</h2>
-        <div class="modal-badge-row">
-          <span id="modal-loc-target">📍 Ubicación</span>
-          <span>•</span>
-          <span id="modal-cat-target">Categoría</span>
-        </div>
-        <hr style="border:0; border-top:1px solid var(--border); margin-bottom:16px;" />
-        <p class="modal-desc" id="modal-desc-target">Descripción detallada...</p>
-      </div>
-      
-      <div>
-        <div class="booking-box">
-          <p class="booking-price"><strong id="modal-price-target">$0</strong> USD / persona</p>
-          
-          <form class="booking-form" onsubmit="handleBookingSubmit(event)">
-            <div class="form-group">
-              <label for="book-name">Tu Nombre Completo</label>
-              <input type="text" id="book-name" class="form-input" required placeholder="Ej. Carlos Mendoza" />
-            </div>
-            
-            <div class="form-group">
-              <label for="book-date">Fecha de la Experiencia</label>
-              <input type="date" id="book-date" class="form-input" required />
-            </div>
-            
-            <div class="form-group">
-              <label for="book-guests">Número de Personas</label>
-              <input type="number" id="book-guests" class="form-input" min="1" max="20" value="1" required />
-            </div>
-            
-            <button type="submit" class="btn-booking-submit">
-              💬 Solicitar Reserva por WhatsApp
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ NUEVO MODAL: CENTRO DE AYUDA ════════════════════════ -->
-<div class="modal-overlay" id="help-modal" onclick="closeModal('help-modal')">
-  <div class="modal-wrapper modal-sm" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal('help-modal')">✕</button>
-    <h2 class="modal-title" style="margin-bottom: 12px;">Centro de Ayuda</h2>
-    <p style="font-size: 14px; color: var(--mid); margin-bottom: 20px;">Escribe tu consulta y un asesor te atenderá de inmediato por WhatsApp.</p>
-    
-    <form class="booking-form" onsubmit="handleHelpSubmit(event)">
       <div class="form-group">
-        <label for="help-desc">Describe tu solicitud de apoyo</label>
-        <textarea id="help-desc" class="form-input" style="height: 120px; resize: none;" placeholder="Escribe aquí los detalles..." required></textarea>
+        <label>Comentarios</label>
+        <textarea placeholder="Cuéntanos sobre tu grupo, fechas o preguntas..."></textarea>
       </div>
-      <button type="submit" class="btn-booking-submit">
-        💬 Enviar Solicitud
-      </button>
-    </form>
-  </div>
-</div>
-
-<!-- ═══ NUEVO MODAL: CANCELACIONES ══════════════════════════ -->
-<div class="modal-overlay" id="cancel-modal" onclick="closeModal('cancel-modal')">
-  <div class="modal-wrapper modal-sm" onclick="event.stopPropagation()">
-    <button class="modal-close" onclick="closeModal('cancel-modal')">✕</button>
-    <h2 class="modal-title" style="margin-bottom: 16px;">Políticas de Cancelación</h2>
-    <p style="font-size: 15px; color: var(--ink); line-height: 1.6; margin-bottom: 12px;">
-      La política de cancelaciones varía dependiendo de cada experiencia seleccionada.
-    </p>
-    <p style="font-size: 14px; color: var(--mid); line-height: 1.6; margin-bottom: 24px;">
-      Para conocer los términos particulares de tu actividad, por favor solicita los detalles de tu experiencia a nuestro equipo de soporte.
-    </p>
-    <button class="btn-booking-submit" onclick="handleCancelInquiry()">
-      💬 Solicitar detalles de mi experiencia
-    </button>
-  </div>
-</div>
-
-<!-- ═══ CÓMO FUNCIONA ════════════════════════════════════════ -->
-<section class="how">
-  <h2 class="how-title">Cómo funcionan las Experiencias</h2>
-  <div class="how-steps">
-    <div class="how-step">
-      <div class="how-step-num">1</div>
-      <h3>Elige una actividad</h3>
-      <p>Explora cientos de experiencias guiadas por expertos locales apasionados.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-step-num">2</div>
-      <h3>Completa tus datos</h3>
-      <p>Ingresa tu nombre, fecha y cantidad de invitados directamente en el panel informativo.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-step-num">3</div>
-      <h3>Conecta con tu asesor</h3>
-      <p>Tu solicitud genera un enlace seguro de WhatsApp para confirmar itinerarios en tiempo real.</p>
+      <button class="btn-primary" style="width:100%;text-align:center;border:none;cursor:pointer;" onclick="alert('¡Gracias! Nos pondremos en contacto contigo pronto.')">Enviar solicitud</button>
     </div>
   </div>
 </section>
 
-<!-- ═══ BANNER DE SALIDA ═════════════════════════════════════ -->
-<section class="host-banner" id="anfitrion">
-  <div class="host-banner-text">
-    <p class="host-banner-eye">¿Estás listo para experimentar el mundo?</p>
-    <h2>Vive hoy las historias que contarás mañana</h2>
-    <p>Únete a nuestra comunidad global de viajeros</p>
-    <a href="#" class="btn-outline-white">Comenzar hoy</a>
-  </div>
-</section>
-
-<!-- ═══ FOOTER COMPLETO CORREGIDO ════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
-    <div>
-      <div class="footer-brand-name">Wander<span>lust</span></div>
-      <p class="footer-tagline" style="margin-top: 12px; font-size: 14px; max-width: 280px; line-height: 1.5;">Conectando personas a través de descubrimientos locales memorables.</p>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="logo" href="#" style="font-size:1.4rem">🐻 BLACKBEAR <span style="color:var(--amber)">TRAVEL</span></a>
+      <p>Agencia especializada en viajes de aventura, excursiones de montaña, ecoturismo y expediciones internacionales desde México.</p>
     </div>
     <div class="footer-col">
-      <h4>Soporte</h4>
-      <ul>
-        <li><a onclick="openModal('help-modal')">Centro de Ayuda</a></li>
-        <li><a onclick="openModal('cancel-modal')">Cancelaciones</a></li>
-      </ul>
+      <h5>Nacionales</h5>
+      <a href="#">Nevado de Colima</a>
+      <a href="#">Pico de Orizaba</a>
+      <a href="#">Iztaccíhuatl</a>
+      <a href="#">Nevado de Toluca</a>
+      <a href="#">Volcán La Malinche</a>
+    </div>
+    <div class="footer-col">
+      <h5>Internacionales</h5>
+      <a href="#">Everest Base Camp</a>
+      <a href="#">Bolivia</a>
+      <a href="#">Ecuador</a>
+      <a href="#">Guatemala</a>
+      <a href="#">Islandia</a>
+    </div>
+    <div class="footer-col">
+      <h5>Empresa</h5>
+      <a href="#">Equipo BBT</a>
+      <a href="#">Ser Guía</a>
+      <a href="#">Patrocinadores</a>
+      <a href="#">Aviso de Privacidad</a>
+      <a href="#">Términos y Condiciones</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2026 Wanderlust, Inc. Todos los derechos reservados.</p>
+    <span>© 2017–2026 BlackBear Travel · Todos los derechos reservados</span>
+    <span>SECTUR certificado · Diseño web inspirado en blackbeartravel.mx</span>
   </div>
 </footer>
 
-<!-- ═══ JAVASCRIPT CORREGIDO Y AMPLIADO ══════════════════════ -->
 <script>
-  let activeLocation = 'all';
-  let activeCategory = 'all';
-  let currentSelectedExpTitle = ''; 
-
-  const phoneNumber = "522212495531";
-
-  // Funciones genéricas para nuevos modales
-  function openModal(id) {
-    document.getElementById(id).classList.add('active');
-  }
-
-  function closeModal(id) {
-    document.getElementById(id).classList.remove('active');
-  }
-
-  // Filtrado por Destino (Desde la barra simplificada del Hero)
-  function executeHeroSearch() {
-    activeLocation = document.getElementById('search-dest').value;
-    applyCombinedFilters();
-    document.getElementById('exp-grid').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
-  // Filtrado por Categoría (Desde las píldoras inferiores)
-  function filterCategory(pill) {
-    document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-    activeCategory = pill.getAttribute('data-cat-value');
-    applyCombinedFilters();
-  }
-
-  // Motor combinatorio
-  function applyCombinedFilters() {
-    const cards = document.querySelectorAll('#exp-grid .card');
-    let visibleCount = 0;
-
-    cards.forEach(card => {
-      const cardCat = card.getAttribute('data-cat');
-      const cardLoc = card.getAttribute('data-location');
-
-      const matchLoc = (activeLocation === 'all' || cardLoc === activeLocation);
-      const matchCat = (activeCategory === 'all' || cardCat === activeCategory);
-
-      if (matchLoc && matchCat) {
-        card.style.display = 'block';
-        visibleCount++;
+  // filter trips
+  function filterTrips(cat, btn) {
+    document.querySelectorAll('.filter-tabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.trip-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = '';
       } else {
         card.style.display = 'none';
       }
     });
-
-    document.getElementById('filter-status-bar').style.display = (activeCategory !== 'all' || activeLocation !== 'all') ? 'flex' : 'none';
-    document.getElementById('no-results-msg').style.display = (visibleCount === 0) ? 'block' : 'none';
   }
 
-  function resetAllFilters() {
-    activeCategory = 'all'; activeLocation = 'all';
-    document.getElementById('search-dest').value = 'all';
-    document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
-    document.querySelector('.cat-pill[data-cat-value="all"]').classList.add('active');
-    applyCombinedFilters();
-  }
-
-  // MODAL BANNER FLOTANTE DE EXPERIENCIA
-  function openExperienceModal(cardElement) {
-    const title = cardElement.querySelector('.card-title').innerText;
-    const location = cardElement.querySelector('.card-location').innerText;
-    const category = cardElement.querySelector('.card-meta span').innerText;
-    const price = cardElement.getAttribute('data-price');
-    const description = cardElement.getAttribute('data-desc');
-    const imagesArray = cardElement.getAttribute('data-imgs').split(',');
-
-    currentSelectedExpTitle = title;
-
-    document.getElementById('modal-title-target').innerText = title;
-    document.getElementById('modal-loc-target').innerText = `📍 ${location}`;
-    document.getElementById('modal-cat-target').innerText = category;
-    document.getElementById('modal-price-target').innerText = price;
-    document.getElementById('modal-desc-target').innerText = description;
-
-    const galleryBox = document.getElementById('modal-gallery-box');
-    galleryBox.innerHTML = `
-      <img src="${imagesArray[0]}" class="modal-img-main" alt="Principal" />
-      <div class="modal-img-side-stack">
-        <img src="${imagesArray[1] || imagesArray[0]}" class="modal-img-side" alt="Detalle 1" />
-        <img src="${imagesArray[2] || imagesArray[0]}" class="modal-img-side" alt="Detalle 2" />
-      </div>
-    `;
-
-    document.getElementById('exp-modal').classList.add('active');
-  }
-
-  function closeExperienceModal() {
-    document.getElementById('exp-modal').classList.remove('active');
-  }
-
-  // AUTOMATIZACIÓN DE MENSAJE WHATSAPP (RESERVA)
-  function handleBookingSubmit(event) {
-    event.preventDefault();
-
-    const clientName = document.getElementById('book-name').value.trim();
-    const rawDate = document.getElementById('book-date').value;
-    const guestCount = document.getElementById('book-guests').value;
-
-    const dateParts = rawDate.split('-');
-    const formattedDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
-
-    const baseMessage = `Hola Wanderlust, me llamo ${clientName} y me interesa reservar esta experiencia (${currentSelectedExpTitle}) para el día ${formattedDate} para ${guestCount} personas. Me puedes comunicar con uno de tus asesores de experiencias?`;
-
-    const encodedText = encodeURIComponent(baseMessage);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedText}`;
-
-    window.open(whatsappUrl, '_blank');
-  }
-
-  // GESTIÓN DEL CENTRO DE AYUDA (WHATSAPP)
-  function handleHelpSubmit(event) {
-    event.preventDefault();
-    const helpDescription = document.getElementById('help-desc').value.trim();
-    const message = `solicito apoyo con: ${helpDescription}`;
-    
-    window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
-    closeModal('help-modal');
-  }
-
-  // GESTIÓN DE CANCELACIONES (WHATSAPP)
-  function handleCancelInquiry() {
-    const message = `Hola Wanderlust, requiero información sobre las políticas de cancelación. Me gustaría solicitar los detalles de tu experiencia.`;
-    
-    window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`, '_blank');
-    closeModal('cancel-modal');
-  }
+  // nav shrink on scroll
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.background =
+      window.scrollY > 60 ? 'rgba(10,10,10,.98)' : 'rgba(10,10,10,.92)';
+  });
 </script>
-
 </body>
 </html>
