@@ -93,9 +93,27 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(to bottom, rgba(13,26,46,.55) 0%, rgba(13,26,46,.2) 40%, rgba(13,26,46,.85) 100%),
-      url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80') center/cover no-repeat;
+    overflow: hidden;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(13,26,46,.45) 0%, rgba(13,26,46,.1) 40%, rgba(13,26,46,.85) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-bg iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.78vh;
+    height: 100vh;
+    min-width: 100%;
+    min-height: 56.25vw;
+    transform: translate(-50%, -50%);
+    border: none;
+    pointer-events: none;
   }
 
   .hero-content {
@@ -662,7 +680,9 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <iframe src="https://www.youtube.com/embed/3gGUiE1VW7Y?si=HUK4Sk5wDnD1Bvn2&autoplay=1&mute=1&loop=1&playlist=3gGUiE1VW7Y&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
   <div class="hero-content">
     <p class="hero-eyebrow">Viajes hechos a tu medida.</p>
     <h1 class="hero-title">EXPERIENCIAS<br><em>AUTÉNTICAS</em><br>E INMERSIVAS</h1>
